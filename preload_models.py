@@ -1,0 +1,60 @@
+"""Serial FP16-only model downloads, before the Gradio server starts."""
+from __future__ import annotations
+
+import argparse
+import gc
+import sys
+
+import pipeline
+
+
+def preload(local_files_only: bool = False):
+    if not pipeline.torch.cuda.is_available():
+        raise RuntimeError("NVIDIA CUDA GPU not detected. Install requirements.txt and check nvidia-smi.")
+    print("[GPU] " + pipeline.device_description(), flush=True)
+    print("[Cache] " + str(pipeline.os.environ["HF_HOME"]), flush=True)
+    from huggingface_hub import snapshot_download
+
+    print("[1/4] ControlNet Canny: FP16 safetensors only (one download at a time)", flush=True)
+    snapshot_download(
+        repo_id=pipeline.CONTROLNET_ID,
+        allow_patterns=["config.json", "diffusion_pytorch_model.fp16.safetensors"],
+        max_workers=1, local_files_only=local_files_only,
+    )
+    print("[2/4] SD 1.5 backbone: FP16 safetensors only; safety checker excluded", flush=True)
+    if not pipeline.Path(pipeline.MODEL_ID).is_dir():
+        snapshot_download(
+            repo_id=pipeline.MODEL_ID,
+            allow_patterns=[
+                "model_index.json", "scheduler/scheduler_config.json", "tokenizer/*",
+                "feature_extractor/preprocessor_config.json",
+                "text_encoder/config.json", "text_encoder/model.fp16.safetensors",
+                "unet/config.json", "unet/diffusion_pytorch_model.fp16.safetensors",
+                "vae/config.json", "vae/diffusion_pytorch_model.fp16.safetensors",
+            ],
+            max_workers=1, local_files_only=local_files_only,
+        )
+    print("[3/4] Verifying local diffusion models (torch.float16 / variant=fp16)", flush=True)
+    model = pipeline.load_diffusion_models()
+    del model
+    gc.collect()
+    print("[4/4] Downloading/verifying lightweight u2netp (CPUExecutionProvider)", flush=True)
+    session = pipeline.create_rembg_session(local_files_only=local_files_only)
+    del session
+    print("[Complete] All weights verified. Ready to launch python app.py", flush=True)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--offline", action="store_true", help="Verify existing cache without network access")
+    args = parser.parse_args()
+    try:
+        preload(local_files_only=args.offline or pipeline.OFFLINE)
+    except Exception as exc:
+        print(f"[Preload failed] {exc}\nServer was not started. Fix connectivity/cache and rerun preload_models.py.", file=sys.stderr, flush=True)
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
