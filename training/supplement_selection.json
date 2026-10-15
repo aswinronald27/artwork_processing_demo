@@ -1,0 +1,271 @@
+{
+  "target_training_count": 50,
+  "artworks": [
+    {
+      "id": "work_jpg_0160",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\1 Stitch Story\\Individual\\FontNest\\Assigned\\Done\\7147\\7147-GPT_.jpg",
+      "species": "cat",
+      "description": "a brown tabby cat head facing forward, green eyes, blue collar",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0545",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\2 Embrosh\\Old\\Bibin\\Assigned\\Done\\2242\\IMG-20260312-WA0071.jpg",
+      "species": "cat",
+      "description": "a white cat head with black patches on the forehead and ears, yellow eyes",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0780",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\2 Embrosh\\Old\\FontNest\\Assigned\\Done\\1588\\IMG-20260209-WA0165.jpg",
+      "species": "cat",
+      "description": "a brown tabby cat head facing forward, green eyes, black and gold collar",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0811",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\2 Embrosh\\Old\\FontNest\\Assigned\\Done\\1606\\IMG-20260209-WA0182.jpg",
+      "species": "cat",
+      "description": "a fluffy black and white tuxedo cat head, yellow eyes, white muzzle and chest",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0813",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\2 Embrosh\\Old\\FontNest\\Assigned\\Done\\1608\\IMG-20260209-WA0184.jpg",
+      "species": "cat",
+      "description": "a fluffy dark brown cat head, yellow eyes, pointed ears",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0844",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\2 Embrosh\\Old\\FontNest\\Assigned\\Done\\1696\\IMG-20260212-WA0200.jpg",
+      "species": "cat",
+      "description": "a brown and white tabby cat head, large round eyes, long white whiskers",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0847",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\2 Embrosh\\Old\\FontNest\\Assigned\\Done\\1697\\IMG-20260212-WA0203.jpg",
+      "species": "cat",
+      "description": "a fluffy charcoal gray cat head facing forward, yellow eyes",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_1259",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\2 Embrosh\\Orders\\Bibin\\3234\\IMG-20260712-WA0198.jpg",
+      "species": "cat",
+      "description": "an orange and white cat head, tall pink ears, yellow eyes",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpeg_0104",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\1 Stitch Story\\Individual\\Abin\\Assigned\\Done\\8823\\8823_gpt.jpeg",
+      "species": "cat",
+      "description": "a tilted orange and white kitten head, large round dark eyes, pink nose",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpeg_0791",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\1 Stitch Story\\Individual\\FontNest\\Assigned\\Done\\25-12\\2nd set\\4979\\4979 gpt.jpeg",
+      "species": "cat",
+      "description": "a brown tabby cat head facing forward, green eyes, striped forehead",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpeg_1016",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\1 Stitch Story\\Individual\\FontNest\\Assigned\\Done\\6560\\6560_gpt.jpeg",
+      "species": "cat",
+      "description": "a black and white cat head and chest, green eyes, black nose marking",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpeg_1149",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\1 Stitch Story\\Individual\\FontNest\\Assigned\\Done\\7407\\7407_gpt.jpeg",
+      "species": "cat",
+      "description": "a fluffy orange tabby cat head, one eye closed, long whiskers",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpeg_1273",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\1 Stitch Story\\Individual\\FontNest\\Assigned\\Done\\7846\\7846_pt.jpeg",
+      "species": "cat",
+      "description": "a tilted white and orange kitten head, large dark eyes, pink nose",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpeg_1375",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\1 Stitch Story\\Individual\\FontNest\\Assigned\\Done\\8161\\8161_gpt.jpeg",
+      "species": "cat",
+      "description": "a fluffy white cat head tilted to one side, yellow eyes, pink ears",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpeg_1396",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\1 Stitch Story\\Individual\\FontNest\\Assigned\\Done\\8176\\8176_gpt.jpeg",
+      "species": "cat",
+      "description": "a fluffy pale orange kitten head facing forward, large dark eyes",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpeg_1440",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\1 Stitch Story\\Individual\\FontNest\\Assigned\\Done\\8377\\8377_gpt.jpeg",
+      "species": "cat",
+      "description": "an orange and white tabby cat head facing forward, large dark eyes, white muzzle",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpeg_1540",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\1 Stitch Story\\Individual\\FontNest\\Assigned\\Done\\8646\\8646_gpt.jpeg",
+      "species": "cat",
+      "description": "a golden brown striped tabby cat head, large amber eyes, upright ears",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0093",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\1 Stitch Story\\Individual\\FontNest\\Assigned\\Done\\26-12\\5087\\5087(A)_GPT.jpg",
+      "species": "dog",
+      "description": "a tan black and white beagle dog head facing forward, floppy ears, red collar",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0095",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\1 Stitch Story\\Individual\\FontNest\\Assigned\\Done\\26-12\\5087\\5087(B)_GPT.jpg",
+      "species": "dog",
+      "description": "a pale yellow dog head facing forward, floppy ears, open mouth, pink tongue",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0147",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\1 Stitch Story\\Individual\\FontNest\\Assigned\\Done\\7140\\7140_gpt.jpg",
+      "species": "dog",
+      "description": "a gray and white husky dog head, upright ears, blue eyes, closed mouth",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0174",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\1 Stitch Story\\Individual\\JWF Digitizing\\Assigned\\Done\\04-02-26\\Priority 1\\1317\\IMG-20260204-WA0026.jpg",
+      "species": "dog",
+      "description": "an apricot curly-haired poodle dog head, round dark eyes, open mouth, pink tongue",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0178",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\1 Stitch Story\\Individual\\JWF Digitizing\\Assigned\\Done\\04-02-26\\Priority 4\\1305\\IMG-20260203-WA0205.jpg",
+      "species": "dog",
+      "description": "a cream chihuahua dog head, tall pink ears, dark eyes, closed mouth",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0215",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\1 Stitch Story\\Individual\\JWF Digitizing\\Assigned\\Done\\Old\\06-01-26\\5895\\5895_GPT.jpg",
+      "species": "dog",
+      "description": "a small fluffy brown and white dog head looking down, floppy ears",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0237",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\1 Stitch Story\\Individual\\JWF Digitizing\\Assigned\\Done\\Old\\26-12\\2ND SET\\5018\\5018_GPT.jpg",
+      "species": "dog",
+      "description": "a golden dog head facing forward, open mouth, pink tongue, dark nose",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0265",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\1 Stitch Story\\Individual\\JWF Digitizing\\Assigned\\Done\\Old\\29-12\\5234\\5234_GPT.jpg",
+      "species": "dog",
+      "description": "a black dog head in three-quarter view, floppy ears, collar, closed mouth",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0275",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\1 Stitch Story\\Individual\\JWF Digitizing\\Assigned\\Done\\Old\\30-12\\2nd set\\5330\\5330(A)_GPT.jpg",
+      "species": "dog",
+      "description": "a white and gray dog head, folded ears, pink nose, closed mouth",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0280",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\1 Stitch Story\\Individual\\JWF Digitizing\\Assigned\\Done\\Old\\31-12\\5376\\5376_GPT.jpg",
+      "species": "dog",
+      "description": "a fluffy brown and white small dog head, open mouth, pink tongue",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0415",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\2 Embrosh\\Old\\Anish\\Assigned\\Done\\1866\\IMG-20260218-WA0004.jpg",
+      "species": "dog",
+      "description": "a black and tan dog head, folded ears, closed mouth",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0417",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\2 Embrosh\\Old\\Anish\\Assigned\\Done\\1867\\IMG-20260218-WA0003.jpg",
+      "species": "dog",
+      "description": "a pale yellow dog head facing forward, floppy ears, closed mouth",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0461",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\2 Embrosh\\Old\\Aswin Ronald\\Assigned\\Done\\1703\\IMG-20260213-WA0213.jpg",
+      "species": "dog",
+      "description": "a black and tan rottweiler dog head, open mouth, pink tongue, red collar",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0535",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\2 Embrosh\\Old\\Bibin\\Assigned\\Done\\1788\\IMG-20260215-WA0075.jpg",
+      "species": "dog",
+      "description": "a fluffy white dog head facing forward, pointed ears, pink tongue",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0632",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\2 Embrosh\\Old\\FontNest\\Assigned\\Done\\1280\\IMG-20260203-WA0111.jpg",
+      "species": "dog",
+      "description": "a tan black and white long-haired collie dog head and chest, upright ears",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0635",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\2 Embrosh\\Old\\FontNest\\Assigned\\Done\\1282\\IMG-20260203-WA0117.jpg",
+      "species": "dog",
+      "description": "a charcoal gray dog head in three-quarter view, tall cropped ears, closed mouth",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0454",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\2 Embrosh\\Old\\Aswin Ronald\\Assigned\\Done\\1626\\IMG-20260210-WA0184.jpg",
+      "species": "dog",
+      "description": "a pale yellow dog head facing forward, red bandana, open mouth, tongue visible",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0544",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\2 Embrosh\\Old\\Bibin\\Assigned\\Done\\2242\\IMG-20260312-WA0070.jpg",
+      "species": "dog",
+      "description": "a black dog head in side profile, green bandana, pink tongue",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0587",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\2 Embrosh\\Old\\FontNest\\Assigned\\Done\\1201\\IMG-20260131-WA0177.jpg",
+      "species": "dog",
+      "description": "a golden dog head facing forward, floppy ears, open mouth",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0593",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\2 Embrosh\\Old\\FontNest\\Assigned\\Done\\1206\\IMG-20260131-WA0193.jpg",
+      "species": "dog",
+      "description": "a golden dog head facing forward, floppy ears, open mouth, pink tongue",
+      "selection": "visually reviewed standalone flat portrait"
+    },
+    {
+      "id": "work_jpg_0655",
+      "source": "C:\\Users\\silly\\OneDrive\\Work\\2 Embrosh\\Old\\FontNest\\Assigned\\Done\\1297\\IMG-20260203-WA0140.jpg",
+      "species": "dog",
+      "description": "a golden dog head facing forward, floppy ears, pink tongue",
+      "selection": "visually reviewed standalone flat portrait"
+    }
+  ]
+}

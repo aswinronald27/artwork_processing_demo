@@ -19,7 +19,7 @@ Run `preload_models.py` before starting the app. It downloads only the FP16 safe
 
 `app.py` calls `warmup()` before binding the server. Warmup reads cached FP16 weights with `local_files_only=True`, enables memory optimizations, and initializes the CPU-only background session. The Generate handler only accesses warmed models; it cannot start downloads or model initialization. Both the diffusion step callback and Gradio's tracked progress provide live feedback from 0% to 100%. Inference and photos remain local; no cloud inference endpoint or paid API is used.
 
-The default backbone is `stable-diffusion-v1-5/stable-diffusion-v1-5`, a mirror of the deprecated Runway repository (the original currently returns an authorization error). The loader explicitly requires `variant="fp16"`, safetensors, and `torch.float16`, then enables attention/VAE slicing and model CPU offload. rembg uses `new_session(model_name="u2netp", providers=["CPUExecutionProvider"])` to avoid loading incompatible CUDA provider DLLs and keep VRAM available for diffusion. The safety checker is disabled as requested.
+The default backbone is `Lykon/dreamshaper-8`, an SD 1.5-compatible illustration model. The loader explicitly requires `variant="fp16"`, safetensors, and `torch.float16`, then enables attention/VAE slicing and model CPU offload. rembg uses `new_session(model_name="u2netp", providers=["CPUExecutionProvider"])` to avoid loading incompatible CUDA provider DLLs and keep VRAM available for diffusion. The safety checker is disabled as requested.
 
 After successful preloading, no internet is needed for the app. Verify your cache offline:
 
@@ -43,9 +43,39 @@ $env:U2NET_HOME = "C:\models\rembg"
 
 A custom varsity TrueType font may be placed at `assets/varsity.ttf`. Otherwise Windows Arial Black/Bold is used, with a portable bold fallback. Name banners shrink to fit and support top/bottom placement.
 
+## Portrait framing and quality
+
+Background-isolated subjects are now cropped using the alpha mask and enlarged to fit a 440-pixel area on the 512-pixel white canvas. Small mask speckles do not enlarge the crop bounds; meaningful disconnected regions are retained for couples. Flat pet prompts request standalone head/chest artwork and explicitly discourage garments, mockups, logos, and signatures. Pet defaults use 0.95 contour conditioning and 0.60 denoise strength. Examples and UI controls share those defaults.
+
+Use **Check subject framing → Preview isolated subject** to inspect segmentation before spending GPU time. Automatic framing cannot repair missing ears or incorrectly retained background in the mask. Supply a tighter crop when necessary.
+
+`start_portrait_quality.bat` selects `Lykon/dreamshaper-8` and the larger `u2net` background model (still CPU-only). It verifies the cached weights before startup and downloads any missing files. The ordinary launcher also uses DreamShaper 8, with the lighter `u2netp` isolation model unless environment overrides are set. Set `THREADOPS_MODEL_ID=stable-diffusion-v1-5/stable-diffusion-v1-5` to return to the original backbone.
+
+To compare three denoise strengths on your own GPU after preloading:
+
+```powershell
+.venv\Scripts\python.exe compare_portraits.py
+```
+
+Comparison outputs include the prepared photo, contours, and three seed-42 portraits under `outputs/portrait-comparison/`. The SD 1.5 comparison removed the T-shirt composition but still produced painterly fur and showed mask defects. It does not yet reproduce the supplied clean vector reference. Palette reduction was evaluated and rejected because it produced posterization rather than intentional vector shapes.
+
 ## Practical limits
 
-Outputs are 512 × 512 PNG raster artwork, including vector-*style* illustrations and simulated thread texture. They are reference artwork for a human digitizer, not SVG vectors or machine-ready DST/PES stitch files. ControlNet guides silhouettes; it cannot guarantee exact identity or removal of all facial features. Check generated artwork before production.
+### Local SDXL portrait profile
+
+`start_portrait_xl.bat` selects SDXL Base 1.0, its matching compact Canny ControlNet,
+and the `ramel2/emotional-flat-illustration-sdxl-lora` style adapter. This profile
+uses a 768-pixel canvas, DPM++ 2M Karras sampling, FP16 weights, and CPU offload.
+The adapter is enabled only for the faceless portrait style. It cannot use the
+native SD 1.5 pet adapter. First setup downloads several GB; after preloading,
+requests use cached models only. It runs locally without Google API quota.
+The learned flat style can simplify clothing and facial details, so inspect
+the result for likeness and anatomy before using it for production.
+The SDXL portrait style also offers **Simplify detected faces** under Advanced
+settings. It uses the cached CPU YuNet detector and flattens skin regions after
+rendering. Disable it if it alters glasses, accessories, or a face boundary.
+
+Outputs are 512 × 512 PNG raster artwork with DreamShaper, or 768 × 768 with the SDXL profile, including vector-*style* illustrations and simulated thread texture. They are reference artwork for a human digitizer, not SVG vectors or machine-ready DST/PES stitch files. ControlNet guides silhouettes; it cannot guarantee exact identity or removal of all facial features. Check generated artwork before production.
 
 Background isolation failures are reported without stopping generation. If CUDA is unavailable, the app reports that fact and generation fails with setup guidance. GPU memory errors suggest closing other GPU apps. Generation is serialized because the pipeline's offload hooks share GPU state. The launcher binds only to localhost and disables Gradio sharing and analytics.
 

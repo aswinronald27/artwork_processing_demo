@@ -6,3 +6,7 @@ __pycache__/
 outputs/
 *.log
 .playwright-cli/
+training/data/
+training/checkpoints/
+training/prepared/
+Demo Images/

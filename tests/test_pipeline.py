@@ -10,6 +10,28 @@ import pipeline
 
 
 class PreprocessingTests(unittest.TestCase):
+    def test_small_subject_fills_canvas_without_background_or_mask_speckles(self):
+        cutout = Image.new("RGBA", (600, 1200), (0, 0, 0, 0))
+        draw = ImageDraw.Draw(cutout)
+        draw.rectangle((250, 650, 350, 850), fill=(180, 80, 20, 255))
+        draw.point((0, 0), fill=(0, 0, 0, 255))
+        framed = pipeline.frame_cutout(cutout)
+        foreground = np.any(np.asarray(framed) < 245, axis=2)
+        ys, xs = np.nonzero(foreground)
+        self.assertGreater(ys.max() - ys.min(), 430)
+        self.assertGreater(xs.min(), 130)
+        self.assertEqual(framed.getpixel((0, 0)), (255, 255, 255))
+        self.assertEqual(framed.getpixel((256, 256)), (180, 80, 20))
+
+    def test_subject_crop_keeps_multiple_people(self):
+        cutout = Image.new("RGBA", (1000, 1000))
+        draw = ImageDraw.Draw(cutout)
+        draw.rectangle((100, 400, 200, 700), fill="red")
+        draw.rectangle((500, 400, 600, 700), fill="blue")
+        pixels = np.asarray(pipeline.frame_cutout(cutout))
+        self.assertTrue(np.any(np.all(pixels == [255, 0, 0], axis=2)))
+        self.assertTrue(np.any(np.all(pixels == [0, 0, 255], axis=2)))
+
     def test_padding_preserves_aspect_ratio_and_transparency(self):
         source = Image.new("RGBA", (400, 200), (255, 0, 0, 255))
         result = pipeline.preprocess(source, False)
@@ -50,6 +72,30 @@ class PreprocessingTests(unittest.TestCase):
 
 
 class GenerationTests(unittest.TestCase):
+    def test_sdxl_loads_matching_controlnet_and_style_adapter_from_cache(self):
+        with patch.object(pipeline, "IS_SDXL", True), patch.object(pipeline, "STYLE_LORA_ID", "local-flat-style"):
+            with patch("diffusers.ControlNetModel.from_pretrained") as control, patch("diffusers.StableDiffusionXLControlNetImg2ImgPipeline.from_pretrained") as base:
+                with patch("huggingface_hub.snapshot_download", return_value="cached-style") as snapshot, patch("huggingface_hub.hf_hub_download", return_value="cached-base/model_index.json"):
+                    with patch("diffusers.DPMSolverMultistepScheduler.from_config"):
+                        result = pipeline.load_diffusion_models()
+        self.assertIs(result, base.return_value)
+        self.assertNotIn("variant", control.call_args.kwargs)
+        self.assertTrue(control.call_args.kwargs["local_files_only"])
+        self.assertTrue(base.call_args.kwargs["local_files_only"])
+        self.assertEqual(base.call_args.kwargs["variant"], "fp16")
+        snapshot.assert_called_once_with("local-flat-style", allow_patterns=[pipeline.STYLE_LORA_FILE], local_files_only=True)
+        result.load_lora_weights.assert_called_once_with("cached-style", weight_name=pipeline.STYLE_LORA_FILE, adapter_name="flat-portrait")
+
+    def test_overlong_prompt_fails_before_diffusion_instead_of_silent_truncation(self):
+        fake = Mock()
+        fake.tokenizer.model_max_length = 77
+        fake.tokenizer.return_value = SimpleNamespace(input_ids=list(range(100)))
+        with patch.object(pipeline, "get_pipeline", return_value=fake):
+            with self.assertRaisesRegex(ValueError, "100 tokens; maximum 77"):
+                pipeline.generate(Image.new("RGB", (60, 60)), list(pipeline.STYLE_PROMPTS)[1],
+                                  custom_prompt="long instructions", isolate_background=False)
+        fake.assert_not_called()
+
     def test_original_image_edges_strength_and_seed_reach_img2img(self):
         fake = Mock(return_value=SimpleNamespace(images=[Image.new("RGB", (512, 512), "blue")]))
         source = Image.new("RGB", (300, 200), "red")
@@ -131,6 +177,8 @@ class GenerationTests(unittest.TestCase):
             load.assert_called_once()
             background.assert_called_once_with(local_files_only=True)
             fake.enable_attention_slicing.assert_called_once()
+            fake.vae.enable_slicing.assert_called_once()
+            fake.enable_vae_slicing.assert_not_called()
             fake.enable_model_cpu_offload.assert_called_once()
 
     def test_oom_cleans_offload_hooks_and_reports_recovery(self):
